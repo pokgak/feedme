@@ -17,4 +17,4 @@ RUN npm install
 COPY . .
 
 # Start the app
-CMD [ "node", "--require", "./instrumentation.js", "index.js" ]  
+CMD [ "node", "index.js" ]  
