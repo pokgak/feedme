@@ -17,6 +17,7 @@ spec:
       containers:
       - name: backend
         image: ghcr.io/pokgak/feedme/backend:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         env:
