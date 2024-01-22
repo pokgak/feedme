@@ -55,6 +55,10 @@ async function main() {
   });
 }
 
+process.on('SIGINT', function () {
+  process.exit();
+});
+
 main()
   .then(() => console.log("server started"))
   .catch((err) => console.error(err));
