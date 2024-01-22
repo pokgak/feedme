@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      imagePullSecrets:
+        - name: dockerconfigjson-ghcr-io
+      containers:
+      - name: backend
+        image: ghcr.io/pokgak/feedme/backend:latest
+        ports:
+        - containerPort: 3000
+        env:
+          - name: MONGODB_USER
+            value: feedme
+          - name: MONGODB_PASSWORD
+            value: password
+          - name: MONGODB_URL
+            value: "mongodb://$(MONGODB_USER):$(MONGODB_PASSWORD)@mongo.mongo.svc.cluster.local:27017"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            # cpu: ""
+            memory: 512Mi
