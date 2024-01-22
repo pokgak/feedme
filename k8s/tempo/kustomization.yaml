@@ -1,0 +1,12 @@
+---
+namespace: monitoring
+
+resources:
+  - namespace.yaml
+
+helmCharts:
+  - name: tempo
+    releaseName: tempo
+    repo: https://grafana.github.io/helm-charts
+    namespace: monitoring
+    version: 1.7.1
