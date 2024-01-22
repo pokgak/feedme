@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+      - name: backend
+        image: mongo:6
+        ports:
+        - containerPort: 27017
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            value: feedme
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            value: password
+          - name: MONGO_INITDB_DATABASE
+            value: feedme
+        resources:
+          requests:
+            cpu: 100m
+            memory: 512Mi
