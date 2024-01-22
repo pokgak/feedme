@@ -29,6 +29,13 @@ spec:
             value: "mongodb://$(MONGODB_USER):$(MONGODB_PASSWORD)@mongo.mongo.svc.cluster.local:27017"
           - name: OTEL_SERVICE_NAME
             value: feedme
+          - name: BASELIME_KEY
+            valueFrom:
+              configMapKeyRef:
+                name: feedme-config
+                key: BASELIME_KEY
+          - name: NODE_OPTIONS
+            value: "-r ./src/instrumentation.js"
         resources:
           requests:
             cpu: 100m
