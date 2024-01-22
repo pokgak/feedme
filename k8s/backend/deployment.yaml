@@ -34,8 +34,6 @@ spec:
               configMapKeyRef:
                 name: feedme-config
                 key: BASELIME_KEY
-          - name: NODE_OPTIONS
-            value: "-r ./instrumentation.js"
         resources:
           requests:
             cpu: 100m
