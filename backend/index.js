@@ -27,6 +27,13 @@ async function main() {
 
   app.use(cors());
 
+  app.use(function (req, res, next) {
+    if (req.url.startsWith('/api/')) {
+      req.url = req.url.substring(4);
+    }
+    next();
+  });
+
   app.get("/orders", async (req, res) => {
     const orders = await orderCollection.find({}).toArray();
     res.send(orders);
