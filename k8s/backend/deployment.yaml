@@ -26,7 +26,7 @@ spec:
           - name: MONGODB_PASSWORD
             value: password
           - name: MONGODB_URL
-            value: "mongodb://$(MONGODB_USER):$(MONGODB_PASSWORD)@mongo.mongo.svc.cluster.local:27017"
+            value: "mongodb://$(MONGODB_USER):$(MONGODB_PASSWORD)@mongo.mongo:27017"
           - name: OTEL_SERVICE_NAME
             value: feedme
           - name: BASELIME_KEY
