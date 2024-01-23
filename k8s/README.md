@@ -17,12 +17,6 @@ kubectl create secret docker-registry dockerconfigjson-ghcr-io \
     --namespace=apps
 ```
 
-## get grafana admin password
-
-```
-kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
-```
-
 ## create configmap for Baselime
 
 ```
