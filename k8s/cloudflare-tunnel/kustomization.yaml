@@ -1,0 +1,11 @@
+namespace: apps
+
+helmCharts:
+  - name: cloudflare-tunnel-remote
+    releaseName: cloudflared
+    repo: https://cloudflare.github.io/helm-charts
+    version: 0.1.1
+    valuesInline:
+      fullnameOverride: cloudflared
+      cloudflare:
+        tunnel_token: SECRET_VALUE
